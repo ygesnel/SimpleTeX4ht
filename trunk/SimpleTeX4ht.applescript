@@ -181,7 +181,7 @@ on htlatex(option, macName, unixDir, tex4htFiles, openFile, shortName, extension
 	try
 		set tempFolder to POSIX path of (path to temporary items)
 		if extension is "odt" then
-			do shell script "export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/sw/bin/:/usr/local/teTeX/bin/powerpc-apple-darwin-current/:/usr/local/bin:/usr/texbin/;cd  " & unixDir & "; mk4ht oolatex " & macName & " ;grep 'No pages of output.' " & shortName & ".log > " & tempFolder & "st4hTemp2;echo 0 >> " & tempFolder & "st4hTemp2"
+			do shell script "export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/sw/bin/:/usr/local/teTeX/bin/powerpc-apple-darwin-current/:/usr/local/bin:/usr/texbin/;cd  " & unixDir & "; mk4ht oolatex " & macName & " \"\" \"\" \"\" \"-interaction=batchmode\";grep 'No pages of output.' " & shortName & ".log > " & tempFolder & "st4hTemp2;echo 0 >> " & tempFolder & "st4hTemp2"
 		else
 			do shell script "export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/sw/bin/:/usr/local/teTeX/bin/powerpc-apple-darwin-current/:/usr/local/bin:/usr/texbin/;cd  " & unixDir & "; htlatex " & macName & " " & option & ";grep 'No pages of output.' " & shortName & ".log > " & tempFolder & "st4hTemp2;echo 0 >> " & tempFolder & "st4hTemp2"
 			
