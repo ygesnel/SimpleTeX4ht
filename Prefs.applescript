@@ -1,7 +1,7 @@
 -- Prefs.applescript
 -- SimpleTeX4ht
 
-(* © Copyright 2004-2009 Yves GESNEL.
+(* © Copyright 2004-2010 Yves GESNEL.
 
 This file is part of SimpleTeX4ht.
 
