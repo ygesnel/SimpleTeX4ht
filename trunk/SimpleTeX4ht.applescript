@@ -1,7 +1,7 @@
 -- SimpleTeX4ht.applescript
 -- SimpleTeX4ht
 
-(* © Copyright 2004-2009 Yves GESNEL.
+(* © Copyright 2004-2010 Yves GESNEL.
 
 This file is part of SimpleTeX4ht.
 
@@ -122,7 +122,7 @@ on clicked theObject
 				end if
 			else if theObject is button "Convert" of tab view item "otherModes" of tab view "tab" of window "Main" then
 				if (current row of matrix "Matrix" of tab view item "otherModes" of tab view "tab" of window "Main") is 1 then
-					set option to ""
+					set option to "\"xhtml,ooffice\" \"ooffice/! -cmozhtf\" \"-coo\" \"-interaction=batchmode\""
 					set extension to "odt" as string
 				else if (current row of matrix "Matrix" of tab view item "otherModes" of tab view "tab" of window "Main") is 2 then
 					set option to "\"xhtml,mozilla\" \" -cmozhtf\" \"-cvalidate\" \"-interaction=batchmode\""
@@ -181,10 +181,9 @@ on htlatex(option, macName, unixDir, tex4htFiles, openFile, shortName, extension
 	try
 		set tempFolder to POSIX path of (path to temporary items)
 		if extension is "odt" then
-			do shell script "export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/sw/bin/:/usr/local/teTeX/bin/powerpc-apple-darwin-current/:/usr/local/bin:/usr/texbin/;cd  " & unixDir & "; mk4ht oolatex " & macName & " \"\" \"\" \"\" \"-interaction=batchmode\";grep 'No pages of output.' " & shortName & ".log > " & tempFolder & "st4hTemp2;echo 0 >> " & tempFolder & "st4hTemp2"
+			do shell script "export PATH=$PATH:/usr/texbin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/sw/bin:/usr/local/teTeX/bin/powerpc-apple-darwin-current; cd  " & unixDir & "; htlatex " & macName & " " & option & "; mk4ht oolatex " & macName & " \"\" \"\" \"\" \"-interaction=batchmode\" ;  grep 'No pages of output.' " & shortName & ".log > " & tempFolder & "st4hTemp2;echo 0 >> " & tempFolder & "st4hTemp2"
 		else
-			do shell script "export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/sw/bin/:/usr/local/teTeX/bin/powerpc-apple-darwin-current/:/usr/local/bin:/usr/texbin/;cd  " & unixDir & "; htlatex " & macName & " " & option & ";grep 'No pages of output.' " & shortName & ".log > " & tempFolder & "st4hTemp2;echo 0 >> " & tempFolder & "st4hTemp2"
-			
+			do shell script "export PATH=$PATH:/usr/texbin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/sw/bin:/usr/local/teTeX/bin/powerpc-apple-darwin-current; cd  " & unixDir & "; htlatex " & macName & " " & option & ";grep 'No pages of output.' " & shortName & ".log > " & tempFolder & "st4hTemp2;echo 0 >> " & tempFolder & "st4hTemp2"
 		end if
 	on error
 		stopProcess()
@@ -207,11 +206,11 @@ on htlatex(option, macName, unixDir, tex4htFiles, openFile, shortName, extension
 	else
 		try
 			if tex4htFiles is true and openFile is true then
-				do shell script "cd  " & unixDir & ";rm " & shortName & ".4ct;rm " & shortName & ".4tc;rm " & shortName & ".aux;rm " & shortName & ".dvi;rm " & shortName & ".idv;rm " & shortName & ".lg;rm " & shortName & ".log;rm " & shortName & ".tmp;rm " & shortName & ".xref; open " & shortName & "." & extension & ""
+				do shell script "cd  " & unixDir & ";rm " & shortName & "*.4*;rm " & shortName & ".aux;rm " & shortName & ".dvi;rm " & shortName & ".idv;rm " & shortName & ".lg;rm " & shortName & ".log;rm " & shortName & "*.tmp;rm " & shortName & ".xref; open " & shortName & "." & extension & ""
 			else if tex4htFiles is false and openFile is true then
 				do shell script "cd  " & unixDir & ";open " & shortName & "." & extension & ""
 			else if tex4htFiles is true and openFile is false then
-				do shell script "cd  " & unixDir & ";rm " & shortName & ".4ct;rm " & shortName & ".4tc;rm " & shortName & ".aux;rm " & shortName & ".dvi;rm " & shortName & ".idv;rm " & shortName & ".lg;rm " & shortName & ".log;rm " & shortName & ".tmp;rm " & shortName & ".xref"
+				do shell script "cd  " & unixDir & ";rm " & shortName & "*.4*;rm " & shortName & ".aux;rm " & shortName & ".dvi;rm " & shortName & ".idv;rm " & shortName & ".lg;rm " & shortName & ".log;rm " & shortName & "*.tmp;rm " & shortName & ".xref"
 			end if
 		end try
 	end if
@@ -227,7 +226,7 @@ end getPlainText
 -- Check for TeX4ht
 on presenceTeX4ht()
 	set tempFolder to POSIX path of (path to temporary items)
-	do shell script "export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/sw/bin/:/usr/local/teTeX/bin/powerpc-apple-darwin-current/:/usr/local/bin:/usr/texbin/; cd " & tempFolder & "; which htlatex >  st4hTemp1; echo 0 >> st4hTemp1" -- echo 0 avoid a blank temporary file
+	do shell script "export PATH=$PATH:/usr/texbin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/sw/bin:/usr/local/teTeX/bin/powerpc-apple-darwin-current; cd " & tempFolder & "; which htlatex >  st4hTemp1; echo 0 >> st4hTemp1" -- echo 0 avoid a blank temporary file
 	set thePath to ((path to temporary items as Unicode text) & "st4hTemp1")
 	set test to read file thePath
 	do shell script "rm " & tempFolder & "st4hTemp1"
