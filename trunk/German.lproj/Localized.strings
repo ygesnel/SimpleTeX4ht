@@ -1,5 +1,0 @@
-/* Alert dialog */
-"error"="Kann nicht konvertieren ! TeX4ht nicht installiert.";
-"conversionError"="Ein Fehler ist aufgetreten während der Umstellung.";
-/* Dialog box */
-"select"="Wählen Sie eine LaTeX-Datei";
