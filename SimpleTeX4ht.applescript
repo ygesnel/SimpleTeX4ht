@@ -29,9 +29,14 @@ property progressWindow : null
 on will finish launching theObject
 	try
 		tell user defaults
-			make new default entry at end of default entries with properties {name:"options", content:{false, false}}
+			make new default entry at end of default entries with properties {name:"options", contents:{false, false}}
+			make new default entry at end of default entries with properties {name:"HTMLOptions", content:{false, false}}
+			make new default entry at end of default entries with properties {name:"otherModesOptions", content:{1}}
+			make new default entry at end of default entries with properties {name:"expertOptions", contents:{"", "", "", ""}}
+			make new default entry at end of default entries with properties {name:"tabName", contents:{"HTML"}}
 		end tell
 	end try
+	read_Preferences()
 end will finish launching
 
 on launched theObject
@@ -157,7 +162,60 @@ on should quit after last window closed theObject
 	return true
 end should quit after last window closed
 
+on will quit theObject
+	save_Preferences()
+end will quit
+
 (* ==== Handlers ==== *)
+
+on read_Preferences()
+	-- Read the expert options from the "SimpleTeX4ht.plist" in  the ~/Library/Preferences directory and then sets those values in the UI elements.
+	try
+		set theHTMLOptions to contents of default entry "HTMLOptions" of user defaults
+		set theotherModesOptions to contents of default entry "otherModesOptions" of user defaults
+		set theExpertOptions to contents of default entry "expertOptions" of user defaults
+		set theTabName to contents of default entry "tabName" of user defaults as string
+		tell window "Main"
+			-- HTML Tab UI
+			set state of button "multipages" of tab view item "HTML" of tab view "tab" to item 1 of theHTMLOptions
+			set state of button "XHTML" of tab view item "HTML" of tab view "tab" to item 2 of theHTMLOptions
+			-- other Modes Tab UI
+			set current row of matrix "Matrix" of tab view item "otherModes" of tab view "tab" to item 1 of theotherModesOptions
+			-- Expert tab UI
+			set contents of text field "option1" of tab view item "Expert" of tab view "tab" to item 1 of theExpertOptions
+			set contents of text field "option2" of tab view item "Expert" of tab view "tab" to item 2 of theExpertOptions
+			set contents of text field "option3" of tab view item "Expert" of tab view "tab" to item 3 of theExpertOptions
+			set contents of text field "option4" of tab view item "Expert" of tab view "tab" to item 4 of theExpertOptions
+		end tell
+		-- Tab UI
+		tell tab view "tab" of window "Main"
+			set the current tab view item to tab view item theTabName
+		end tell
+	end try
+end read_Preferences
+
+on save_Preferences()
+	-- Get the contents of the UI elements
+	tell window "Main"
+		set theHTMLOptions to {state of button "multipages" of tab view item "HTML" of tab view "tab", state of button "XHTML" of tab view item "HTML" of tab view "tab"}
+		set theotherModesOptions to {current row of matrix "Matrix" of tab view item "otherModes" of tab view "tab"}
+		set theExpertOptions to {contents of text field "option1" of tab view item "Expert" of tab view "tab", contents of text field "option2" of tab view item "Expert" of tab view "tab", contents of text field "option3" of tab view item "Expert" of tab view "tab", contents of text field "option4" of tab view item "Expert" of tab view "tab"}
+	end tell
+	tell tab view "tab" of window "Main"
+		set the theTabName to the name of the current tab view item
+	end tell
+	
+	-- Write out the preferences
+	--try
+	tell user defaults
+		set contents of default entry "HTMLOptions" to theHTMLOptions
+		set contents of default entry "otherModesOptions" to theotherModesOptions
+		set contents of default entry "expertOptions" to theExpertOptions
+		set contents of default entry "tabName" to theTabName
+	end tell
+	--end try
+	call method "synchronize" of object user defaults
+end save_Preferences
 
 -- Show progress indicator
 on beginProcess()
