@@ -47,6 +47,13 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		65359356078DD41800E8BB2F /* AppleScriptKit.sdef */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.sdef; name = AppleScriptKit.sdef; path = /System/Library/Frameworks/AppleScriptKit.framework/Versions/A/Resources/AppleScriptKit.sdef; sourceTree = "<absolute>"; };
 		B40D5E920E0557CA00787171 /* Prefs.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = Prefs.applescript; sourceTree = "<group>"; };
+		B43DFDE51291AA190077306B /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Italian; path = Italian.lproj/Credits.rtf; sourceTree = "<group>"; };
+		B43DFDE61291AA190077306B /* Italian */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Italian; path = Italian.lproj/Help; sourceTree = "<group>"; };
+		B43DFDE71291AA190077306B /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B43DFDE81291AA190077306B /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/Localized.strings; sourceTree = "<group>"; };
+		B43DFDE91291AA190077306B /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		B43DFDEA1291AA190077306B /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/Preferences.nib; sourceTree = "<group>"; };
+		B43DFDEB1291AA190077306B /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/Progress.nib; sourceTree = "<group>"; };
 		B4AE593309783063009E42D1 /* SimpleTeX4ht.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = SimpleTeX4ht.icns; sourceTree = "<group>"; };
 		B4AE59D7097835FC009E42D1 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
 		B4AE5A540978D35C009E42D1 /* French */ = {isa = PBXFileReference; lastKnownFileType = folder; name = French; path = French.lproj/Help; sourceTree = "<group>"; };
@@ -219,6 +226,7 @@
 				French,
 				German,
 				Spanish,
+				Italian,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* SimpleTeX4ht */;
 			projectDirPath = "";
@@ -266,6 +274,7 @@
 				B4AFB0600E44375900E3287B /* German */,
 				B4AFB05F0E44375100E3287B /* Spanish */,
 				B4AFB0610E44376500E3287B /* French */,
+				B43DFDE71291AA190077306B /* Italian */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -277,6 +286,7 @@
 				B4AFB0650E4437C700E3287B /* German */,
 				B4AFB0660E4437D300E3287B /* French */,
 				B4AFB0670E4437DA00E3287B /* Spanish */,
+				B43DFDE91291AA190077306B /* Italian */,
 			);
 			name = MainMenu.nib;
 			sourceTree = "<group>";
@@ -288,6 +298,7 @@
 				B4AFB0620E44378C00E3287B /* Spanish */,
 				B4AFB0630E44379E00E3287B /* French */,
 				B4AFB0640E4437A300E3287B /* German */,
+				B43DFDE51291AA190077306B /* Italian */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -299,6 +310,7 @@
 				B4AE5A650978D3C5009E42D1 /* English */,
 				B4AE5A7C0978D3E4009E42D1 /* German */,
 				B4AE5A950978D4BE009E42D1 /* Spanish */,
+				B43DFDE61291AA190077306B /* Italian */,
 			);
 			name = Help;
 			sourceTree = "<group>";
@@ -310,6 +322,7 @@
 				B4AFB05B0E44369C00E3287B /* French */,
 				B4AFB05C0E4436B900E3287B /* German */,
 				B4AFB05D0E4436C600E3287B /* Spanish */,
+				B43DFDEA1291AA190077306B /* Italian */,
 			);
 			name = Preferences.nib;
 			sourceTree = "<group>";
@@ -321,6 +334,7 @@
 				B4D3EA150E2B2F7000D75EF2 /* French */,
 				B4D3EA160E2B2F7C00D75EF2 /* German */,
 				B4D3EA170E2B2F9400D75EF2 /* Spanish */,
+				B43DFDEB1291AA190077306B /* Italian */,
 			);
 			name = Progress.nib;
 			sourceTree = "<group>";
@@ -332,6 +346,7 @@
 				B4E192C00CBCD82F00CE568D /* French */,
 				B4E192C10CBCD84500CE568D /* Spanish */,
 				B4E192C20CBCD85D00CE568D /* German */,
+				B43DFDE81291AA190077306B /* Italian */,
 			);
 			name = Localized.strings;
 			sourceTree = "<group>";
