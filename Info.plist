@@ -17,7 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.0</string>
+	<string>3.1</string>
+	<key>CFBundleVersion</key>
+	<string>3.1</string>
 	<key>CFBundleSignature</key>
 	<string>ST4H</string>
 	<key>NSAppleScriptEnabled</key>
@@ -26,5 +28,13 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUFeedURL</key>
+	<string>http://www.simpletex4ht.free.fr/sparkle/sparkle.xml</string>
+	<key>SUPublicDSAKeyFile</key>
+	<string>dsa_pub.pem</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>Help</string>
+	<key>CFBundleHelpBookName</key>
+	<string>Help</string>
 </dict>
 </plist>
