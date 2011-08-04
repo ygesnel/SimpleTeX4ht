@@ -1,8 +1,0 @@
-/* Localized versions of Info.plist keys */
-
-CFBundleName = "SimpleTeX4ht";
-CFBundleShortVersionString = "Version 3.0";
-CFBundleGetInfoString = "3.0";
-NSHumanReadableCopyright = "Copyright © 2004-2011 Yves Gesnel";
-CFBundleHelpBookFolder = "Help";
-CFBundleHelpBookName = "Aide SimpleTeX4ht";
