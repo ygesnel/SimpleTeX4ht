@@ -1,0 +1,1 @@
+# SimpleTeX4ht is a Mac OS X graphical user interface for TeX4ht that translates LaTeX files into HTML or XHTML, MathML, Text Encoding Initiative (TEI), DocBook, OpenDocument (.odt which is the native format of OpenOffice.org).
